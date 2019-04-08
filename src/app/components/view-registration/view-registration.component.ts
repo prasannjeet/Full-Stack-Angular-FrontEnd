@@ -21,7 +21,8 @@ export class ViewRegistrationComponent implements OnInit {
     this.bikeService.getBike(id).subscribe(
       data => {
         this.bikeReg = data;
-        console.log('Raw Output: ' + '\n' + JSON.stringify(data));
+        console.log(this.bikeReg.email === undefined);
+        console.log('Raw Output Purchase Date: ' + '\n' + JSON.stringify(this.bikeReg.email));
       },
       err => console.error(err),
       () => console.log('bikes loaded')
