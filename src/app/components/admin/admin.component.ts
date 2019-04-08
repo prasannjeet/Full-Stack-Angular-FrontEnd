@@ -1,0 +1,27 @@
+import { Component, OnInit } from '@angular/core';
+import { BikeService } from '../../services/bike.service';
+
+@Component({
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.scss']
+})
+export class AdminComponent implements OnInit {
+  // Create a public variable to hold all the bikes that are returned from the backend
+  public bikes;
+
+  constructor(private bikeService: BikeService) { }
+
+  ngOnInit() {
+    this.getBikes();
+  }
+
+  getBikes() {
+    this.bikeService.getBikes().subscribe(
+      data => { this.bikes = data; },
+      err => console.error(err),
+      () => console.log('bikes loaded')
+    );
+  }
+
+}

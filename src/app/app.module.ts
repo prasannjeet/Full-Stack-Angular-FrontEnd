@@ -1,18 +1,31 @@
+// About proxy.conf.json: This file tells the ng java server that if it receives any request that come into it that begin with /server on
+// line3, then it should forward them on to localhost:8080, which is to find its target on line 4.
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
+import { BikeService } from './services/bike.service';
+import { AdminComponent } from './components/admin/admin.component';
+import { HomeComponent } from './components/home/home.component';
+import { ViewRegistrationComponent } from './components/view-registration/view-registration.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AdminComponent,
+    HomeComponent,
+    ViewRegistrationComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [BikeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
